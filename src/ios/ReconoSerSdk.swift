@@ -84,6 +84,7 @@ import ReconoSerOlimpia
         let guidAgreement = command.arguments[2] as? String ?? ""
         
         let viewController = ReconoSerSdkViewController()
+        viewController.modalPresentationStyle = .overFullScreen
         viewController.commandDelegate = self.commandDelegate
         viewController.callbackId = command.callbackId
         viewController.metodo = "DOCUMENT_REQUEST_FRONT"
@@ -101,6 +102,7 @@ import ReconoSerOlimpia
         let guidAgreement = command.arguments[2] as? String ?? ""
         
         let viewController = ReconoSerSdkViewController()
+        viewController.modalPresentationStyle = .overFullScreen
         viewController.commandDelegate = self.commandDelegate
         viewController.callbackId = command.callbackId
         viewController.metodo = "DOCUMENT_REQUEST_BACK"
@@ -118,6 +120,7 @@ import ReconoSerOlimpia
         let guidAgreement = command.arguments[2] as? String ?? ""
         
         let viewController = ReconoSerSdkViewController()
+        viewController.modalPresentationStyle = .overFullScreen
         viewController.commandDelegate = self.commandDelegate
         viewController.callbackId = command.callbackId
         viewController.metodo = "BARCODE_DOCUMENT"
@@ -176,6 +179,7 @@ import ReconoSerOlimpia
         let dataConv = command.arguments[3] as? String ?? ""
         
         let viewController = ReconoSerSdkViewController()
+        viewController.modalPresentationStyle = .overFullScreen
         viewController.commandDelegate = self.commandDelegate
         viewController.callbackId = command.callbackId
         viewController.metodo = "FACE"
@@ -205,6 +209,7 @@ import ReconoSerOlimpia
         let guidCitizen = command.arguments[0] as? String ?? ""
         
         let viewController = ReconoSerSdkViewController()
+        viewController.modalPresentationStyle = .overFullScreen
         viewController.commandDelegate = self.commandDelegate
         viewController.callbackId = command.callbackId
         viewController.metodo = "VIEW_QUESTIONS"

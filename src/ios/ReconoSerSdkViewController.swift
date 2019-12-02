@@ -161,6 +161,7 @@ class ReconoSerSdkViewController: UIViewController {
             }
 
             let navController = UINavigationController(rootViewController: formQuestionViewController!)
+            navController.modalPresentationStyle = .overFullScreen //For iOS 13
             self.present(navController, animated:true, completion: nil)
 
         })

@@ -1,0 +1,19 @@
+{
+  "name": "cordova-plugin-reconoser",
+  "version": "1.0.0",
+  "description": "Plugin to conect with SDK ReconoSer",
+  "cordova": {
+    "id": "cordova-plugin-reconoser",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "Yeison Betancourt S",
+  "license": "MIT"
+}

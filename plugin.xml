@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="cordova-plugin-reconoser"
+    version="0.0.1">
+    <name>Cordova Plugin ReconoSer</name>
+    <description></description>
+    <license>MIT</license>
+    <keywords></keywords>
+    <repo>https://github.com/betancourtYeison/cordova-plugin-reconoser.git</repo>
+    
+
+    <!-- android -->
+    <platform name="android">
+      <js-module src="www/plugin.js" name="plugin">
+        <runs/>
+
+        <!-- Este es el nombre por el cual se accedera el plugin -->
+        <clobbers target="ReconoSerSdk" />
+      </js-module>
+      <config-file target="res/xml/config.xml" parent="/*">
+        <feature name="ReconoSerSdk">
+          <param name="android-package" value="com.plugin.ReconoSerSdk" />
+          <param name="onload" value="true" />
+        </feature>
+      </config-file>
+
+      <config-file target="AndroidManifest.xml" parent="/manifest/application">
+        <activity android:label="ReconoSer Activity" android:name="com.plugin.ReconoSerActivity">
+          <intent-filter>
+            <!-- We are going to use this name to start the activity later in Java -->
+            <action android:name="com.plugin.ReconoSerActivity" />
+            <category android:name="android.intent.category.DEFAULT" />
+          </intent-filter>
+        </activity>
+      </config-file>
+      <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+      <source-file src="src/android/ReconoSerSdk.java" target-dir="src/com/plugin" />
+      <source-file src="src/android/ReconoSerActivity.java" target-dir="src/com/plugin" />
+      <source-file src="src/android/live_preview_layout.xml" target-dir="res/layout"/>
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <js-module src="www/plugin.js" name="plugin">
+            <runs/>
+            <clobbers target="ReconoSerSdk" />
+        </js-module>
+        <config-file target="config.xml" parent="/*">
+            <feature name="ReconoSerSdk">
+                <param name="ios-package" value="ReconoSerSdk" onload="true" />
+            </feature>
+        </config-file>
+
+        <!-- Add in the plugin .swift files here -->
+        <source-file src="src/ios/ReconoSerSdk.swift" />
+        <source-file src="src/ios/ReconoSerSdkViewController.swift" />
+        <source-file src="src/ios/ReconoSerSdkViewController.xib" />
+        <!-- Add in the swift-support plugin by default -->
+        <dependency id="cordova-plugin-add-swift-support" version="1.7.2"/>
+    </platform>
+</plugin>

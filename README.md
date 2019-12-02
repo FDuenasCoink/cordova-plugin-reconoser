@@ -228,12 +228,7 @@ Limpia y Reconstruye el proyecto
 
 **Android:**
 * Error: package android.support.annotation does not exist
-
-Cambia el package: `import android.support.annotation.RequiresApi;` 
-
-Por: `import androidx.annotation.RequiresApi;`
-
-Luego repita el Paso 6
+> Cambia el package: `import android.support.annotation.RequiresApi;` por: `import androidx.annotation.RequiresApi;`. Luego repita el Paso 6
 
 ## Ejecutar Android
 
@@ -320,7 +315,6 @@ Selecciona un **Team** con un **Bundle Identifier** que te permita firmar la apl
 
 Modificar archivo **Info.plist** de la siguiente manera **Reconoser** > **Resources** > **ReconoSer-Info.plist.** click derecho y abrir como código
 
-## com.application:
 
 ```
 ...

@@ -68,7 +68,7 @@ class ReconoSerSdkViewController: UIViewController {
                 "success": true,
                 "canceled": false,
                 "path_file_r": path_file_r,
-                "result": result?.description ?? ""
+                "result": result ?? ""
             ]
         }
         
@@ -231,10 +231,12 @@ extension ReconoSerSdkViewController:BiometricReaderDelegate {
 }
 
 extension ReconoSerSdkViewController:FormQuestionViewControllerDelegate {
-    func dataAnswerSend(_ idQuestionnaire: String, questionnaireRegistration: Int, answers: [RespuestasIn]) {
-        print("onScanFace", answers)
-        // Set the plugin result to success.
-        let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: answers);
+    func dataAnswerSend(_ idQuestionnaire: String, questionnaireRegistration: Int, answers: Answers) {
+        print("dataAnswerSend", answers.toJSON())
+        // Set the plugin result to fail.
+        var pluginResult = CDVPluginResult (status: CDVCommandStatus_ERROR, messageAs: "{\"codigo\": 0, \"descripcion\": \"El Plugin ha fallado.\"}");
+        
+        pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: answers.toJSON());
         
         // Send the function result back to Cordova.
         self.commandDelegate!.send(pluginResult, callbackId: self.callbackId);

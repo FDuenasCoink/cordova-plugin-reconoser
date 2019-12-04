@@ -24,7 +24,7 @@ Frameworks como Ionic cuentan con una libreria extensa de herramientas nativas e
 
 Clonar el proyecto de Ionic: 
 
-`git clone https://bitbucket.org/reconoser/reconoser-ionic.git `
+`git clone https://bitbucket.org/reconoser_id/reconoser-ionic.git`
 
 Seleccionar proyecto: 
 
@@ -34,7 +34,7 @@ Seleccionar proyecto:
 
 Asegurate de tener instalados los siguientes Plugins en package.json: 
 
-`ionic cordova plugin add https://bitbucket.org/reconoser/cordova-plugin-reconoser.git`
+`ionic cordova plugin add https://bitbucket.org/reconoser_id/cordova-plugin-reconoser.git`
 
 `ionic cordova plugin add cordova-plugin-android-permissions`
 

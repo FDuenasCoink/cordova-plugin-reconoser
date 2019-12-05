@@ -32,7 +32,7 @@ Seleccionar proyecto:
 
 ## Paso 2:
 
-Asegurate de tener instalados los siguientes Plugins en package.json: 
+Asegurate de instalar los siguientes Plugins en package.json: 
 
 `ionic cordova plugin add https://bitbucket.org/reconoser_id/cordova-plugin-reconoser.git`
 
@@ -42,9 +42,9 @@ Asegurate de tener instalados los siguientes Plugins en package.json:
 
 ## Paso 3:
 
-Asegurate de tener moficiado el archivo **appp.module.ts** con AndroidPermissions:
+Asegurate de tener moficiado el archivo **app.module.ts** con AndroidPermissions:
 
-## appp.module.ts:
+## app.module.ts:
 
 ```
 import { NgModule } from '@angular/core';
@@ -116,18 +116,18 @@ authToken=jp_6p9i7udra8u1h1p71mau771n7p 
 
 ## Paso 2:
 
-Modificar el archivo **android/build.gradle** de la siguiente manera:
+Modificar el archivo **android/build.gradle** o **build.gradle (Project: android)** con la configuración de mavel de la siguiente manera:
 
-## android/build.gradle:
+## android/build.gradle o **build.gradle (Project: android)**:
 
 ```
 allprojects {
     repositories {
         google()
         jcenter()
-        maven {
-            url 'https://jitpack.io' // Esta línea
-            credentials { username authToken } // Esta línea
+        maven { // Esta línea
+            url 'https://jitpack.io' 
+            credentials { username authToken }
         }
     }
 
@@ -143,15 +143,17 @@ allprojects {
 
 ## Paso 3:
 
-Modificar el archivo **android/app/build.gradle** de la siguiente manera:
+Modificar el archivo **android/app/build.gradle** o **build.gradle (Module: app)** de la siguiente manera:
 
-## android/app/build.gradle:
+## android/app/build.gradle o **build.gradle (Module: app)**:
+
+Agrega dataBinding in android y el sdk implementation en dependencies
 
 ```
 android {
     ....
-    dataBinding {
-        enabled = true // Esta línea
+    dataBinding { // Esta línea
+        enabled = true
     }
 }
 

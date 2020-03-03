@@ -1,6 +1,6 @@
 var exec = require("cordova/exec");
 
-var PLUGIN_NAME = "ReconoSerSdk-nuevo";
+var PLUGIN_NAME = "ReconoSerSdk";
 
 var ReconoSerSdk = {
     consultarConvenio: function(args, successCallback, errorCallback) {

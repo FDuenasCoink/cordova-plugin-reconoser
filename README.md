@@ -283,7 +283,7 @@ target 'ReconoSer' do
   use_frameworks!
   project 'ReconoSer.xcodeproj'
   
-  pod 'ReconoSerOlimpia'
+  pod 'ReconoSerSDK'
   pod 'MBProgressHUD'
 
 end
@@ -456,6 +456,6 @@ module.exports = ReconoSerSdk;
 En la segunda carpeta encontraremos en el caso de iOS tres archivos: **ReconoSerSdk.swift**, **ReconoSerSdkViewController.swift** y **ReconoSerSdkViewController.xib** los cuales como te imaginaras son los archivos donde definiremos las funciones nativas que recibiran parametros y devolveran una respusta. En el caso de Android encontrarás una tres archivos: **ReconoSerActivity.java**, **ReconoSerActivity.java** y **live_preview_layout.xml** donde de igual manera encontrarás las funciones para cuando ejecutes en Android.
 
 
-## Autor
+## Powered By
 
-- **@betancourtYeison**
+- **ReconoSER ID**

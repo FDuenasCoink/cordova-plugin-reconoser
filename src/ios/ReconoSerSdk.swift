@@ -1,4 +1,4 @@
-import ReconoSerOlimpia
+import ReconoSerSDK
 /*
 * Notes: The @objc shows that this class & function should be exposed to Cordova.
 */
@@ -12,7 +12,7 @@ import ReconoSerOlimpia
             self.handleResponse(data: data?.toJSON() ?? "", error: error?.toJSON() ?? "", callbackId: command.callbackId)
         })
     }
-    
+
     @objc(enviarOTP:) // Declare your function name.
     func enviarOTP(command: CDVInvokedUrlCommand) {
         // write the function code.
@@ -24,7 +24,7 @@ import ReconoSerOlimpia
             self.handleResponse(data: data?.toJSON() ?? "", error: error?.toJSON() ?? "", callbackId: command.callbackId)
         })
     }
-    
+
     @objc(validarOTP:) // Declare your function name.
     func validarOTP(command: CDVInvokedUrlCommand) {
         // write the function code.
@@ -34,7 +34,7 @@ import ReconoSerOlimpia
             self.handleResponse(data: data?.toJSON() ?? "", error: error?.toJSON() ?? "", callbackId: command.callbackId)
         })
     }
-    
+
     @objc(guardarCiudadano:) // Declare your function name.
     func guardarCiudadano(command: CDVInvokedUrlCommand) {
         // write the function code.
@@ -48,12 +48,12 @@ import ReconoSerOlimpia
         let procesoConvGuid = command.arguments[7] as? String ?? ""
         let asesor = command.arguments[8] as? String ?? ""
         let sede = command.arguments[9] as? String ?? ""
-        let ciudadano = CiudadanoIn(guidConv: guidConv, guidCiu: guidCiu, tipoDoc: tipoDoc, numDoc: numDoc, email: email, celular: celular, datosAdi: datosAdi, procesoConvGuid: procesoConvGuid, asesor: asesor, sede: sede)
+        let ciudadano = CiudadanoIn(guidConv: guidConv, guidCiu: guidCiu, tipoDoc: tipoDoc, numDoc: numDoc, email: email, celular: celular, datosAdi: datosAdi, procesoConvGuid: procesoConvGuid, asesor: asesor, sede: sede, codPais: "57")
         ServiciosOlimpia.sharedInstance.guardarCiudadano(ciudadano: ciudadano, completionHandler: {(data, error) in
             self.handleResponse(data: data?.toJSON() ?? "", error: error?.toJSON() ?? "", callbackId: command.callbackId)
       })
     }
-    
+
     @objc(consultarCiudadano:) // Declare your function name.
     func consultarCiudadano(command: CDVInvokedUrlCommand) {
         // write the function code.
@@ -62,7 +62,7 @@ import ReconoSerOlimpia
             self.handleResponse(data: data?.toJSON() ?? "", error: error?.toJSON() ?? "", callbackId: command.callbackId)
         })
     }
-    
+
     @objc(guardarlogError:) // Declare your function name.
     func guardarlogError(command: CDVInvokedUrlCommand) {
         // write the function code.
@@ -75,14 +75,14 @@ import ReconoSerOlimpia
             self.handleResponse(data: data?.toJSON() ?? "", error: error?.toJSON() ?? "", callbackId: command.callbackId)
         })
     }
-    
+
     @objc(anversoCapturar:) // Declare your function name.
     func anversoCapturar(command: CDVInvokedUrlCommand) {
         // write the function code.
         let guidCitizen = command.arguments[0] as? String ?? ""
         let dataConv = command.arguments[1] as? String ?? ""
         let guidAgreement = command.arguments[2] as? String ?? ""
-        
+
         let viewController = ReconoSerSdkViewController()
         viewController.modalPresentationStyle = .overFullScreen
         viewController.commandDelegate = self.commandDelegate
@@ -93,14 +93,14 @@ import ReconoSerOlimpia
         viewController.guidCitizen = guidCitizen
         self.viewController.present(viewController, animated: true)
     }
-    
+
     @objc(reversoCapturar:) // Declare your function name.
     func reversoCapturar(command: CDVInvokedUrlCommand) {
         // write the function code.
         let guidCitizen = command.arguments[0] as? String ?? ""
         let dataConv = command.arguments[1] as? String ?? ""
         let guidAgreement = command.arguments[2] as? String ?? ""
-        
+
         let viewController = ReconoSerSdkViewController()
         viewController.modalPresentationStyle = .overFullScreen
         viewController.commandDelegate = self.commandDelegate
@@ -111,14 +111,14 @@ import ReconoSerOlimpia
         viewController.guidCitizen = guidCitizen
         self.viewController.present(viewController, animated: true)
     }
-    
+
     @objc(barcodeCapturar:) // Declare your function name.
     func barcodeCapturar(command: CDVInvokedUrlCommand) {
         // write the function code.
         let guidCitizen = command.arguments[0] as? String ?? ""
         let dataConv = command.arguments[1] as? String ?? ""
         let guidAgreement = command.arguments[2] as? String ?? ""
-        
+
         let viewController = ReconoSerSdkViewController()
         viewController.modalPresentationStyle = .overFullScreen
         viewController.commandDelegate = self.commandDelegate
@@ -129,7 +129,7 @@ import ReconoSerOlimpia
         viewController.guidCitizen = guidCitizen
         self.viewController.present(viewController, animated: true)
     }
-    
+
     @objc(guardarDocumento:) // Declare your function name.
     func guardarDocumento(command: CDVInvokedUrlCommand) {
         // write the function code.
@@ -139,13 +139,13 @@ import ReconoSerOlimpia
             self.handleResponse(data: data?.toJSON() ?? "", error: error?.toJSON() ?? "", callbackId: command.callbackId)
         })
     }
-    
+
     @objc(guardarBiometria:) // Declare your function name.
     func guardarBiometria(command: CDVInvokedUrlCommand) {
         // write the function code.
         // Set the plugin result to fail.
         var pluginResult = CDVPluginResult (status: CDVCommandStatus_ERROR, messageAs: "{\"codigo\": 0, \"descripcion\": \"El Plugin ha fallado.\"}");
-        
+
         let guidCiu = command.arguments[0] as? String ?? ""
         let idServicio = command.arguments[1] as? String ?? ""
         let subtipo = command.arguments[2] as? String ?? ""
@@ -154,22 +154,22 @@ import ReconoSerOlimpia
         let datosAdi = command.arguments[5] as? String ?? ""
         let usuario = command.arguments[6] as? String ?? ""
         let biometria = GuardarBiometriaIn(guidCiu: guidCiu, idServicio: idServicio, subtipo: subtipo, valor: valor!, formato: formato, datosAdi: datosAdi, usuario: usuario)
-        
+
         if(valor?.count == 0){
             // Set the plugin result to fail.
             pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "{\"codigo\": 0, \"descripcion\": \"Ocurrió un error al cargar la imagen.\"}");
-            
+
             // Send the function result back to Cordova.
             self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
-            
+
             return
         }
-        
+
         ServiciosOlimpia.sharedInstance.guardarBiometria(biometria: biometria, completionHandler: {(data, error) in
             self.handleResponse(data: data?.toJSON() ?? "", error: error?.toJSON() ?? "", callbackId: command.callbackId)
         })
     }
-    
+
     @objc(guardarBiometriaReferencia:) // Declare your function name.
     func guardarBiometriaReferencia(command: CDVInvokedUrlCommand) {
         // write the function code.
@@ -177,7 +177,7 @@ import ReconoSerOlimpia
         let imagePath = command.arguments[1] as? String ?? ""
         let guidAgreement = command.arguments[2] as? String ?? ""
         let dataConv = command.arguments[3] as? String ?? ""
-        
+
         let viewController = ReconoSerSdkViewController()
         viewController.modalPresentationStyle = .overFullScreen
         viewController.commandDelegate = self.commandDelegate
@@ -189,7 +189,7 @@ import ReconoSerOlimpia
         viewController.dataConv = dataConv
         self.viewController.present(viewController, animated: true)
     }
-    
+
     @objc(validarBiometria:) // Declare your function name.
     func validarBiometria(command: CDVInvokedUrlCommand) {
         // write the function code.
@@ -202,12 +202,12 @@ import ReconoSerOlimpia
             self.handleResponse(data: data?.toJSON() ?? "", error: error?.toJSON() ?? "", callbackId: command.callbackId)
         })
     }
-    
+
     @objc(mostrarPreguntas:) // Declare your function name.
     func mostrarPreguntas(command: CDVInvokedUrlCommand) {
         // write the function code.
         let guidCitizen = command.arguments[0] as? String ?? ""
-        
+
         let viewController = ReconoSerSdkViewController()
         viewController.modalPresentationStyle = .overFullScreen
         viewController.commandDelegate = self.commandDelegate
@@ -216,7 +216,7 @@ import ReconoSerOlimpia
         viewController.guidCitizen = guidCitizen
         self.viewController.present(viewController, animated: true)
     }
-    
+
     @objc(solicitarPreguntasDemograficas:) // Declare your function name.
     func solicitarPreguntasDemograficas(command: CDVInvokedUrlCommand) {
         // write the function code.
@@ -225,7 +225,7 @@ import ReconoSerOlimpia
             self.handleResponse(data: data?.toJSON() ?? "", error: error?.toJSON() ?? "", callbackId: command.callbackId)
         })
     }
-    
+
     @objc(validarRespuestaDemograficas:) // Declare your function name.
     func validarRespuestaDemograficas(command: CDVInvokedUrlCommand) {
         // write the function code.
@@ -234,21 +234,21 @@ import ReconoSerOlimpia
         let registroCuestionario = command.arguments[2] as? String ?? ""
         let respuestas = command.arguments[3] as? [Dictionary<String, String>] ?? []
         var respuestasIn = [RespuestasIn]()
-        
+
         for item in respuestas {
             let respuesta = RespuestasIn(idPregunta: item["idPregunta"] ?? "", idRespuesta: item["idRespuesta"] ?? "")
             respuestasIn.append(respuesta)
         }
-        
+
         ServiciosOlimpia.sharedInstance.validarRespuestaDemograficas(guidCiu: guidCiu, idCuestionario: idCuestionario, registroCuestionario: Int(registroCuestionario) ?? 0, respuestas: respuestasIn, completionHandler: {(data, error) in
             self.handleResponse(data: data?.toJSON() ?? "", error: error?.toJSON() ?? "", callbackId: command.callbackId)
         })
     }
-    
+
     func handleResponse(data: String, error: String, callbackId: String) {
         // Set the plugin result to fail.
         var pluginResult = CDVPluginResult (status: CDVCommandStatus_ERROR, messageAs: "{\"codigo\": 0, \"descripcion\": \"El Plugin ha fallado.\"}");
-        
+
         if (error.count > 0) {
             // Set the plugin result to fail.
             pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: error);
@@ -256,11 +256,11 @@ import ReconoSerOlimpia
             // Set the plugin result to succeed.
             pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: data);
         }
-        
+
         // Send the function result back to Cordova.
         self.commandDelegate!.send(pluginResult, callbackId: callbackId);
     }
-    
+
     func pathToBase64() -> String? {
         let imageFileUrl = FileManager.default.temporaryDirectory.appendingPathComponent("reconoser_sdk_tmp.jpeg")
         do {

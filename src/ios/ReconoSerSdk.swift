@@ -153,7 +153,7 @@ import ReconoSerSDK
         let formato = command.arguments[4] as? String ?? ""
         let datosAdi = command.arguments[5] as? String ?? ""
         let usuario = command.arguments[6] as? String ?? ""
-        let biometria = GuardarBiometriaIn(guidCiu: guidCiu, idServicio: idServicio, subtipo: subtipo, valor: valor!, formato: formato, datosAdi: datosAdi, usuario: usuario)
+        let biometria = GuardarBiometriaIn(guidCiu: guidCiu, idServicio: idServicio, subtipo: subtipo, valor: valor!, formato: formato, datosAdi: datosAdi, usuario: usuario, numDoc: "", tipoDoc: "")
 
         if(valor?.count == 0){
             // Set the plugin result to fail.

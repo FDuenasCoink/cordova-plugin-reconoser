@@ -293,7 +293,7 @@ public class ReconoSerSdk extends CordovaPlugin {
     private void guardarBiometria(JSONArray args) throws JSONException {
         GuardarBiometriaIn guardarBiometriaIn = new GuardarBiometriaIn();
         guardarBiometriaIn.setGuidCiu(args.getString(0));
-        guardarBiometriaIn.setIdServicio(args.getString(1));
+        guardarBiometriaIn.setIdServicio(args.getInt(1));
         guardarBiometriaIn.setSubTipo(args.getString(2));
         guardarBiometriaIn.setValor(ImageUtils.getEncodedBase64FromFilePath(args.getString(3)));
         guardarBiometriaIn.setFormato(args.getString(4));

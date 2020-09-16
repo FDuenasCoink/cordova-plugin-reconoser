@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.reconosersdk.reconosersdk.citizens.barcode.ColombianCitizenBarcode;
+import com.reconosersdk.reconosersdk.citizens.barcode.ForeignBarcode;
 import com.reconosersdk.reconosersdk.ui.bioFacial.views.LivePreviewActivity;
 import com.reconosersdk.reconosersdk.ui.document.views.BarCodeActivity;
 import com.reconosersdk.reconosersdk.ui.document.views.RequestDocumentActivity;
@@ -108,7 +110,24 @@ public class ReconoSerActivity extends Activity {
 
     private void onRespondBarcodeDocument(Intent data) {
         Intent intent = new Intent();
-        intent.putExtra("result", data.getStringExtra(IntentExtras.DATA_BARCODE));
+        String barcodeType = data.getStringExtra(IntentExtras.TYPE_BARCODE);
+        String result = "";
+
+        if (barcodeType.equals("PDF_417/TI") || barcodeType.equals("PDF_417/CC")) {
+            ColombianCitizenBarcode colombianCitizenBarcode = new ColombianCitizenBarcode();
+            colombianCitizenBarcode = data.getParcelableExtra(IntentExtras.DATA_DOCUMENT_CO);
+            result = colombianCitizenBarcode.toString();
+        } else if(barcodeType.equals("PDF_417/CE")){
+            ForeignBarcode foreignBarcode = new ForeignBarcode();
+            foreignBarcode = data.getParcelableExtra(IntentExtras.DATA_DOCUMENT_CO);
+            Log.e("ACTIVITYBARC",foreignBarcode.toString());
+            result = foreignBarcode.toString();
+        }else {
+            result = barcodeType;
+        }
+
+        intent.putExtra("result", result);
+        intent.putExtra("type_barcode", data.getStringExtra(IntentExtras.TYPE_BARCODE));
         setResult(RESULT_OK, intent);
     }
 

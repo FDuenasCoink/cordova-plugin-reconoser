@@ -22,6 +22,12 @@ class ReconoSerSdkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // para desarrollo
+        //ReconoSerSDK.configureEnv(environment: .dev)
+
+        // para producción
+        ReconoSerSDK.configureEnv(environment: .prod)
+
         ReconoSerSDK.configure(guidAgreement: guidAgreement ?? "", dataConv: dataConv ?? "")
         
         // Do any additional setup after loading the view.

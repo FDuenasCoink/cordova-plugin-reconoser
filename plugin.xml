@@ -26,7 +26,7 @@
       </config-file>
 
       <config-file target="AndroidManifest.xml" parent="/manifest/application">
-        <activity android:label="ReconoSer Activity" android:name="com.plugin.ReconoSerActivity">
+        <activity android:exported="true" android:label="ReconoSer Activity" android:name="com.plugin.ReconoSerActivity">
           <intent-filter>
             <!-- We are going to use this name to start the activity later in Java -->
             <action android:name="com.plugin.ReconoSerActivity" />
@@ -38,6 +38,7 @@
       <source-file src="src/android/ReconoSerSdk.java" target-dir="src/com/plugin" />
       <source-file src="src/android/ReconoSerActivity.java" target-dir="src/com/plugin" />
       <source-file src="src/android/live_preview_layout.xml" target-dir="res/layout"/>
+      <framework src="org.bitbucket.reconoser_id.sdk_android:reconosersdk:1.5.13-min16-beta1:production@aar" />
     </platform>
 
     <!-- ios -->
@@ -51,7 +52,7 @@
                 <param name="ios-package" value="ReconoSerSdk" onload="true" />
             </feature>
         </config-file>
-
+        <framework src="ReconoSerSDK" type="podspec" spec="2.1.43" />
         <!-- Add in the plugin .swift files here -->
         <source-file src="src/ios/ReconoSerSdk.swift" />
         <source-file src="src/ios/ReconoSerSdkViewController.swift" />

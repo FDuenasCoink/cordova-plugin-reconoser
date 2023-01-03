@@ -273,7 +273,11 @@ public class ReconoSerSdk extends CordovaPlugin {
     }
 
     private void guardarDocumento(String guidCiu, String response) {
-        GuardarDocumentoIn guardarDocumentoIn = new GuardarDocumentoIn(guidCiu, response);
+        // QA
+        // GuardarDocumentoIn guardarDocumentoIn = new GuardarDocumentoIn(guidCiu, response, "91ff7896-8d5e-4669-a0cc-c44ac5ddf5cc");
+
+        // PROD
+        GuardarDocumentoIn guardarDocumentoIn = new GuardarDocumentoIn(guidCiu, response, "2327eafa-ce16-4fc3-908d-f28b83e6bfe3");
 
         ServicesOlimpia.getInstance().guardarDocumento(guardarDocumentoIn, new OlimpiaInterface.CallbackSaveDocument() {
             @Override
@@ -389,12 +393,14 @@ public class ReconoSerSdk extends CordovaPlugin {
             Bundle extras = data.getExtras();// Get data sent by the Intent
             String path_file_r = extras != null ? extras.getString("path_file_r") : null; // data parameter will be send from the other activity.
             String result = extras != null ? extras.getString("result") : null; // data parameter will be send from the other activity.
+            String type_barcode = extras != null ? extras.getString("type_barcode") : null; // data parameter will be send from the other activity.
             JSONObject args = new JSONObject();
             try {
                 args.put("success", true);
                 args.put("canceled", false);
                 args.put("path_file_r", path_file_r);
                 args.put("result", result);
+                args.put("type", type_barcode);
             } catch (JSONException e) {
                 e.printStackTrace();
                 PluginResult resultado = new PluginResult(PluginResult.Status.ERROR, e.getMessage());
